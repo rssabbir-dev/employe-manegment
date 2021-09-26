@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			body {
+				background: #333;
+			}
+			/*CONTAINER CSS*/
+			.container {
+				background: rgb(255 255 255 / 8%);
+				width: 300px;
+				margin: auto;
+				height: 400px;
+				padding: 10px;
+				text-align: center;
+				border-left: 1px solid #797979;
+				border-bottom: 1px solid #797979;
+				border-radius: 5px;
+				margin-top: 100px;
+				box-shadow: -3px 6px 9px 0px #0000006e;
+				position: relative;
+			}
+			/* EMPLOYE IMAGE */
+			.employe-img img {
+				max-width: 100px;
+				border-radius: 50%;
+				border: 2px solid #222;
+				margin: 10px;
+			}
+			.employe-img {
+				border-bottom: 1px solid #797979;
+			}
+			/* EMPLOYE DETEILS */
+			.employe-deteils {
+				margin-top: 20px;
+				text-align: left;
+				color: white;
+			}
+			.employe-deteils h2 {
+				text-align: center;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #797979;
+			}
+			.employe-deteils h3,
+			p {
+				padding-top: 10px;
+			}
+			/* USER INPUT FOR DATA SEARCH */
+			.user-input-box {
+				position: absolute;
+				bottom: 20px;
+				margin: auto;
+				width: 90%;
+			}
+			.user-input-box #user-input {
+				width: 70%;
+				height: 30px;
+				font-size: 20px;
+				margin: 10px 0px;
+				padding: 5px;
+				outline: none;
+				border: none;
+				border-radius: 5px;
+				transition: 0.5s;
+			}
+			.user-input-box #user-input:focus {
+				width: 100%;
+			}
+			.user-input-box .btn {
+				padding: 10px 15px;
+				font-size: 16;
+				background: chocolate;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				transition: 0.5s;
+			}
+			.user-input-box .btn:active {
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- CONTAINER SECTION -->
+		<div class="container">
+			<!-- EMPLOYE IMAGE SECTION -->
+			<div class="employe-img" id="employe-img"></div>
+			<!-- EMPLOYE DETAILS SECTION -->
+			<div class="employe-deteils">
+				<h2><span id="employe-name">DEMO</span></h2>
+				<h3>Title: <span id="employe-title">DEOM</span></h3>
+				<p>Age:<span id="employe-age">DEMO</span></p>
+			</div>
+			<!-- USER INPUT FOR DATA SEACRH -->
+			<div class="user-input-box">
+				<input type="text" id="user-input" value="" /><br />
+				<input
+					class="btn"
+					type="button"
+					value="Find Now"
+					onclick="myBtn()"
+				/>
+			</div>
+		</div>
+		<script>
+			var employeImg = document.getElementById('employe-img') //EMPLOYE IMAGE
+			var employeName = document.getElementById('employe-name') //EMPLOYE NAME
+			var employeTitle = document.getElementById('employe-title') //EMPLOYE JOB TITLE
+			var employeAge = document.getElementById('employe-age') //EMPLOYE AGE
+
+			//EMPLOYES DATA LIKE NAME, TITLE, AGE, PICTURE
+			var employeData = {
+				ceo: {
+					name: 'Sabbir Hossain',
+					title: 'CEO',
+					age: '19',
+					img: 'img/profile-pic.png',
+				},
+				maneger: {
+					name: 'Rahat Hossain',
+					title: 'MANEGER',
+					age: '25',
+					img: 'img/member-2.png',
+				},
+				worker: {
+					name: 'Rafi Hossain',
+					title: 'WORKER',
+					age: '37',
+					img: 'img/member-4.png',
+				},
+			}
+
+			//EMPLOYE DATA MANEGMENT SYSTEM. WORK WITH HTML
+			var userInput
+			//USER INPUT FOR DATA SEACRH FUNCTION
+			function myBtn() {
+				var userType = document.getElementById('user-input').value
+
+				userInput = userType.toUpperCase()
+
+				if (userInput == employeData.ceo.title) {
+					employeName.innerHTML = employeData.ceo.name
+					employeTitle.innerHTML = employeData.ceo.title
+					employeAge.innerHTML = employeData.ceo.age
+					employeImg.innerHTML =
+						'<img src="' + employeData.ceo.img + '" />'
+				} else if (userInput == employeData.maneger.title) {
+					employeName.innerHTML = employeData.maneger.name
+					employeTitle.innerHTML = employeData.maneger.title
+					employeAge.innerHTML = employeData.maneger.age
+					employeImg.innerHTML =
+						'<img src="' + employeData.maneger.img + '" />'
+				} else if (userInput == employeData.worker.title) {
+					employeName.innerHTML = employeData.worker.name
+					employeTitle.innerHTML = employeData.worker.title
+					employeAge.innerHTML = employeData.worker.age
+					employeImg.innerHTML =
+						'<img src="' + employeData.worker.img + '" />'
+				} else {
+					employeName.innerHTML = 'Not Fount'
+					employeTitle.innerHTML = 'Not Fount'
+					employeAge.innerHTML = 'Not Fount'
+					alert('Please Enter Correct Keyword')
+				}
+			}
+		</script>
+	</body>
+</html>
